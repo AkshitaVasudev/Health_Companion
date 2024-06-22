@@ -128,7 +128,7 @@ def forgot_password():
         account = cursor.fetchone()
 
         if account:
-            cursor.execute("UPDATE login1 SET password = ? WHERE email = ?", (new_password, email))  # Store plain text new password
+            cursor.execute("UPDATE login1 SET password = ? WHERE email = ?", (new_password, email))  
             conn.commit()
             conn.close()
 
@@ -199,7 +199,7 @@ import ast
 from flask import render_template
 
 def fetch_image_urls(diet_names):
-    unsplash_access_key = 'mtFEnOXGJ6eX1AVuZa6LgKDZloxvJyNxtNswm3FOeQ4'
+    unsplash_access_key = 'Enter your Unsplash API key'
     image_urls = {}
 
     for diet_name in diet_names:
@@ -271,7 +271,7 @@ if __name__ == '__main__':
         conn = get_db()
         cursor = conn.cursor()
 
-        # Check if table exists
+        
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS login1 (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -281,7 +281,7 @@ if __name__ == '__main__':
         )
         ''')
 
-        # Insert a test user if not exists
+       
         cursor.execute('''
         INSERT OR IGNORE INTO login1 (id, name, email, password) 
         VALUES (1, 'user1', 'user1@gmail.com', '1234')
